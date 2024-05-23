@@ -75,7 +75,7 @@ export default function Uploader({
             e.stopPropagation();
             setDragActive(false);
 
-            const file = e.dataTransfer.files && e.dataTransfer.files[0];
+            const file = e.dataTransfer.files?.[0];
             inputRef.current!.files = e.dataTransfer.files; // set input file to dropped file
             handleUpload(file);
           }}
@@ -133,7 +133,7 @@ export default function Uploader({
           accept="image/*"
           className="sr-only"
           onChange={(e) => {
-            const file = e.currentTarget.files && e.currentTarget.files[0];
+            const file = e.currentTarget.files?.[0];
             handleUpload(file);
           }}
         />
