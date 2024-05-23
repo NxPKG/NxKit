@@ -16,7 +16,7 @@ export default function Uploader() {
 
   const onChangePicture = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      const file = event.currentTarget.files && event.currentTarget.files[0];
+      const file = event.currentTarget.files?.[0];
       if (file) {
         if (file.size / 1024 / 1024 > 50) {
           toast.error("File size too big (max 50MB)");
@@ -111,7 +111,7 @@ export default function Uploader() {
               e.stopPropagation();
               setDragActive(false);
 
-              const file = e.dataTransfer.files && e.dataTransfer.files[0];
+              const file = e.dataTransfer.files?.[0];
               if (file) {
                 if (file.size / 1024 / 1024 > 50) {
                   toast.error("File size too big (max 50MB)");
