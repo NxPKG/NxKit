@@ -22,7 +22,7 @@ export default function DeletePostForm({ postName }: { postName: string }) {
             va.track("Deleted Post");
             router.refresh();
             router.push(`/site/${res.siteId}`);
-            toast.success(`Successfully deleted post!`);
+            toast.success("Successfully deleted post!");
           }
         })
       }

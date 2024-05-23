@@ -52,7 +52,7 @@ export const createSite = async (formData: FormData) => {
   } catch (error: any) {
     if (error.code === "P2002") {
       return {
-        error: `This subdomain is already taken`,
+        error: "This subdomain is already taken",
       };
     } else {
       return {
@@ -367,7 +367,7 @@ export const updatePostMetadata = withPostAuth(
     } catch (error: any) {
       if (error.code === "P2002") {
         return {
-          error: `This slug is already in use`,
+          error: "This slug is already in use",
         };
       } else {
         return {
