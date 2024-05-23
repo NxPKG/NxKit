@@ -23,7 +23,7 @@ export default function DeleteSiteForm({ siteName }: { siteName: string }) {
               va.track("Deleted Site");
               router.refresh();
               router.push("/sites");
-              toast.success(`Successfully deleted site!`);
+              toast.success("Successfully deleted site!");
             }
           })
           .catch((err: Error) => toast.error(err.message))
