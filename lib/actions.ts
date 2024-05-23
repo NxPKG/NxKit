@@ -184,8 +184,7 @@ export const updateSite = withSiteAuth(
       await revalidateTag(
         `${site.subdomain}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}-metadata`,
       );
-      site.customDomain &&
-        (await revalidateTag(`${site.customDomain}-metadata`));
+      
 
       return response;
     } catch (error: any) {
@@ -212,8 +211,7 @@ export const deleteSite = withSiteAuth(async (_: FormData, site: Site) => {
     await revalidateTag(
       `${site.subdomain}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}-metadata`,
     );
-    response.customDomain &&
-      (await revalidateTag(`${site.customDomain}-metadata`));
+    
     return response;
   } catch (error: any) {
     return {
@@ -251,7 +249,7 @@ export const createPost = withSiteAuth(async (_: FormData, site: Site) => {
   await revalidateTag(
     `${site.subdomain}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}-posts`,
   );
-  site.customDomain && (await revalidateTag(`${site.customDomain}-posts`));
+  
 
   return response;
 });
@@ -297,9 +295,7 @@ export const updatePost = async (data: Post) => {
     );
 
     // if the site has a custom domain, we need to revalidate those tags too
-    post.site?.customDomain &&
-      (await revalidateTag(`${post.site?.customDomain}-posts`),
-      await revalidateTag(`${post.site?.customDomain}-${post.slug}`));
+    
 
     return response;
   } catch (error: any) {
@@ -359,9 +355,7 @@ export const updatePostMetadata = withPostAuth(
       );
 
       // if the site has a custom domain, we need to revalidate those tags too
-      post.site?.customDomain &&
-        (await revalidateTag(`${post.site?.customDomain}-posts`),
-        await revalidateTag(`${post.site?.customDomain}-${post.slug}`));
+      
 
       return response;
     } catch (error: any) {
